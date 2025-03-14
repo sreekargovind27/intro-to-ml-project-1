@@ -7,38 +7,18 @@ from torch.utils.data import DataLoader
 import torch.nn.functional as F
 import torchvision.transforms as transforms
 import numpy as np
-import pickle
 from sklearn.metrics import confusion_matrix
 import time
 from datetime import timedelta
+from scipy.io import loadmat
 
+mat = loadmat('mnist_all.mat')  # loadin the data set
+# We know that MNIST images are 28 pixels in each dimension.
+img_size = 28
 
-# We know that celeb images are 28 pixels in each dimension.
-img_height, img_width =54, 44
-num_channels = 1
-num_classes = 2
+# Tuple with height and width of images used to reshape arrays.
+img_shape = (img_size, img_size)
 
-
-
-def preprocess():
-    with open('face_all.pickle', 'rb') as f:
-         data = pickle.load(f)
-
-    features = data['Feactures']
-    labels = data['labels']
-
-    # normalizing the pixel values (0 to 1)
-    features = features / 255.0
-    # now will split the data into train and validation, test 
-
-    train_x, valid_x, test_x = features[0:21100], features[21100:23765], features[23765:]
-    train_y, valid_y, test_y = labels[0:21100], labels[21100:23765], labels[23765:]
-
-    class CelebADataset(Dataset):
-        def__init__(self, X, y):
-        self.X = torch.tensor (X, dtype=torch.float32).view
-
-         
 def create_cnn():
     class cnn(nn.Module):
         def __init__(self):
