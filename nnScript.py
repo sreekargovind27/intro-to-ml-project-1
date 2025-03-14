@@ -2,7 +2,7 @@ import numpy as np
 from scipy.optimize import minimize
 from scipy.io import loadmat
 from math import sqrt
-
+import pickle
 
 def initializeWeights(n_in, n_out):
     """
@@ -303,4 +303,16 @@ if __name__ == "__main__":
 
     print('\n Test set Accuracy:' + str(100 * np.mean((predicted_label == test_label).astype(float))) + '%')
 
+params = {
+    "selected_features": list(range(n_input)),  # Assuming all features are selected
+    "optimal_n_hidden": n_hidden,
+    "w1": w1,
+    "w2": w2,
+    "optimal_lambda": lambdaval
+}
+
+with open("params.pickle", "wb") as f:
+    pickle.dump(params, f)
+
+print("\nParameters successfully saved in params.pickle!")
 
