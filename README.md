@@ -77,9 +77,7 @@ python facennScript.py
 
 A higher regularization (λ) reduces overfitting but too high values can underfit. The optimal λ was found through validation.
 
-## Video Presentation
-
-A **15-minute demo video (**\`\`**)** is included in this repository, explaining:
+## What we achieved ?
 
 1. **Hyperparameter Tuning**: Effect of hidden layers and regularization.
 2. **Training Process**: How backpropagation updates weights.
